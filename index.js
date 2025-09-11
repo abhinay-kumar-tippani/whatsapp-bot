@@ -45,11 +45,16 @@ client.on('ready', () => {
   latestQr = null;
   latestQrDataUrl = null;
 
-  // Schedule messages every 5 minutes between 4 PM - 10 PM IST
+  // --- Scheduled message job (IST) ---
   cron.schedule('*/5 16-21 * * *', () => {
-    client.sendMessage(`${TARGET}@c.us`, 'Hi ')
-      .then(() => console.log('✅ Message sent at', new Date().toLocaleTimeString()))
+    client.sendMessage(`${TARGET}@c.us`, 'Hi Akshaya ❤️')
+      .then(() => console.log('✅ Message sent at', new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' })))
       .catch(err => console.error('❌ Send error:', err));
+  }, { timezone: 'Asia/Kolkata' });
+
+  // --- Test cron: logs every minute in IST ---
+  cron.schedule('* * * * *', () => {
+    console.log("⏰ Test cron fired at", new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' }));
   }, { timezone: 'Asia/Kolkata' });
 });
 
