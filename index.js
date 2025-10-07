@@ -47,7 +47,7 @@ client.on('ready', () => {
 
   // --- Scheduled message job (IST) ---
   cron.schedule('*/5 16-21 * * *', () => {
-    client.sendMessage(`${TARGET}@c.us`, 'Hi Akshaya ❤️')
+    client.sendMessage(`${TARGET}@c.us`, 'Hi')
       .then(() => console.log('✅ Message sent at', new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' })))
       .catch(err => console.error('❌ Send error:', err));
   }, { timezone: 'Asia/Kolkata' });
@@ -87,3 +87,4 @@ app.get('/qr', (req, res) => {
 
 // Start server
 app.listen(PORT, () => console.log(`🌍 Server running on http://localhost:${PORT}`));
+
